@@ -1,0 +1,135 @@
+.App{
+  background-color:#645f5f ;
+}
+
+
+.navbar{
+  position: relative;
+  width: 100%;
+  height: 20vh;
+  justify-content: space-around;
+  background-color: #ddd;
+}
+.world{
+  margin-top: 20px;
+}
+.navbaritems{
+  position: absolute;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 800px;
+  justify-content: center;
+  align-items: center;
+}
+.navitems li{
+  list-style-type: none;
+}
+.nav-item-one{
+  font-family: Arial;
+  font-size: 22px;
+  color: black;
+  font-weight: 600;
+}
+.nav-item-two{
+  font-family: Arial;
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 600;
+}
+.navbaritems img{
+  width: 20%;
+}
+.navitems{
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+}
+.info{
+  font-family: Arial;
+  text-align: center;
+  font-size: 30px;
+  color: #ffffff;
+  font-weight: 500;
+}
+.infobox{
+  background-color: #B35E27;
+}
+.card{
+  width: 300px;
+  height: 600px;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 50px 50px 50px rgba(0, 0, 0, 0.15);
+}
+.card-img-top{
+  width: 100%;
+  height: 40%;
+}
+.country_list{
+  width: 1170px;
+  margin: 100px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 60px;
+  row-gap: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.coat{
+  width: 17%;
+}
+
+h5 span{
+  font-family: Arial;
+  color: #B35E27;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.button_afr{
+  border-radius: 12px;
+  border: none;
+  background-color: #B35E27;
+}
+.button_afr a{
+  color: #ffffff;
+}
+
+.search {
+  width: 51%;
+  margin: 4rem 21rem 2rem;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.3rem 1.70rem;
+  border-radius: 3rem;
+  background: #ffffff;
+  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -3px -3px 4px #222527;
+  box-shadow: 0px 1px 2px #1c1d1f, -2px -2px 5px #222527;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  font-size: 1.2rem;
+  font-family: var(--font-raleway);
+  font-weight: 500;
+  padding-right: 1rem;
+
+  outline: none;
+  color: #B35E27;
+  background: #ffffff;
+}
+.search input::placeholder{
+  color: #B35E27;
+}
+.search img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
