@@ -5,53 +5,48 @@ import FetchAfrica from './FetchAfrica';
 import Currency from './Currency';
 import Capital from './Capital';
 import Language from './Language';
+import Navlinks from './Navlinks';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import imagelogo from './images/apilogo-01.png';
-
-import { Routes, Route, Link } from 'react-router-dom'
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navlinks/>,
+    children:[
+      {
+        index: true,
+        element: <FetchData/>
+      },
+      {
+        path: "/FetchAfrica",
+        element: <FetchAfrica/>
+      },
+      {
+        path: "/Currency",
+        element: <Currency/>
+      },
+      {
+        path: "/Capital",
+        element: <Capital/>
+      },
+      {
+        path: "/Language",
+        element: <Language/>
+      },
+      {
+        path: "#",
+        element: <h2>Page Not Found</h2>
+      }
+    ]
+  }
+])
 
 function App() {
 
   return (
 
-    <div className='App'>
-      <nav className='navbar'>
-        <div className='navbaritems'>
-          <img src={imagelogo} className='world' />
-          <ul className='navitems'>
-            <li>
-              <Link to='/' className='nav-item-one' >World</Link>
-            </li>
-            <li>
-              <button className='button_afr'><Link to='/africa' className='nav-item-two'>Africa</Link></button>
-            </li>
-            <li>
-              <button className='button_afr'><Link to='/currency' className='nav-item-two'>Currency</Link></button>
-            </li>
-            <li>
-              <button className='button_afr'><Link to='/language' className='nav-item-two'>Language</Link></button>
-            </li>
-            <li>
-              <button className='button_afr'><Link to='/capital' className='nav-item-two'>Capital</Link></button>
-            </li>
-           
-          </ul>
-        </div>
-      </nav>
-      <div className='infobox'>
-        <p className='info'>The List Of Countries Of The World</p>
-      </div>
-
-      <Routes>
-
-        <Route path='/' element={<FetchData />} />
-        <Route path='/africa' element={<FetchAfrica />} />
-        <Route path='/currency' element={<Currency />} />
-        <Route path='/language' element={<Language />} />
-        <Route path='/capital' element={<Capital />} />
-       
-      </Routes>
-
+    <div>
+      <RouterProvider router={router}/>
     </div>
   );
 }

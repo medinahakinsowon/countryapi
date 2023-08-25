@@ -26,7 +26,7 @@ const Currency = ()=>{
       <h3 style={{marginLeft: '100px', color:'white', fontSize: '50px'}}>World Currency</h3>
       <div className='search'>
         <input
-          placeholder='search for capital'
+          placeholder='search for currency'
           value={searchMoney}
           onChange={(e) => setSearchMoney(e.target.value)}
         />

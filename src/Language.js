@@ -25,7 +25,7 @@ const Language = ()=>{
       <h2 style={{marginLeft: '100px', color:'white', fontSize: '50px'}}>World Languages</h2>
       <div className='search'>
         <input
-          placeholder='search for capital'
+          placeholder='search for language'
           value={searchlan}
           onChange={(e) => setSearchLanguage(e.target.value)}
         />
