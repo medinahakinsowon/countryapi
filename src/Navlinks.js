@@ -6,7 +6,6 @@ import { Link, Outlet } from "react-router-dom";
 const Navlinks = () => {
   return (
     <div className="App">
-      <div className="container text-center">
         <nav className='navbar'>
           <div className='navbaritems'>
             <img src={imagelogo} className='world' />
@@ -32,7 +31,6 @@ const Navlinks = () => {
         <div className='infobox'>
               <p className='info'>The List Of Countries Of The World</p>
         </div>
-      </div>
       <Outlet />
     </div>
   )
