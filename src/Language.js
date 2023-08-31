@@ -7,16 +7,51 @@ const Language = ()=>{
 
   const [searchlan, setSearchLanguage] = useState('')
   const [language, setLanguage] = useState([])
+  const [loaderquery, setLoaderQuery] = useState(false)
+  const [error, setError] = useState('')
+  const [dataquery, setDataQuery] = useState([]);
+  const [query, setQuery] = useState("")
+  const [dataerror, setDataError] = useState("");
 
-  const fetchLanguage = async (lan)=>{
-    const response = await fetch(`${languageUrl}${lan}`)
-    const languageData = await response.json()
-    setLanguage(languageData)
+
+  const handleInput = (e) => {
+    setQuery(e.target.value)
   }
+
+  useEffect(() => {
+    async function findData() {
+      try {
+        setLoaderQuery(true)
+        setDataError("")
+        const res = await fetch(`${languageUrl}${query}`);
+        if (!res.ok) throw new Error("cant find countries !!!!!!")
+        const data = await res.json();
+        setDataQuery(data)
+        setDataError("")
+        console.log(data)
+      } catch (err) {
+        setDataError(err.message)
+      } finally {
+        setLoaderQuery(false)
+      }
+    }
+    if (query.length < 3) {
+      setDataQuery([])
+      setDataError("")
+      return
+    }
+    findData()
+  }, [query])
+
+  // const fetchLanguage = async (lan)=>{
+  //   const response = await fetch(`${languageUrl}${lan}`)
+  //   const languageData = await response.json()
+  //   setLanguage(languageData)
+  // }
   
-  const searchButton = () => {
-    fetchLanguage(searchlan)
-  }
+  // const searchButton = () => {
+  //   fetchLanguage(searchlan)
+  // }
 
 
 
@@ -26,15 +61,15 @@ const Language = ()=>{
       <div className='search'>
         <input
           placeholder='search for language'
-          value={searchlan}
-          onChange={(e) => setSearchLanguage(e.target.value)}
+          value={query}
+          onChange={handleInput}
         />
-        <img src={SearchIcon}
+        {/* <img src={SearchIcon}
           onClick={searchButton}
           alt='search'
-        />
+        /> */}
       </div>
-       <WorldLanguage data={language}></WorldLanguage>
+       <WorldLanguage data={dataquery}></WorldLanguage>
     </div>
   )
 }

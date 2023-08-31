@@ -5,17 +5,52 @@ const capitalUrl = 'https://restcountries.com/v3.1/capital/';
 const Capital = () => {
   const [capital, setCapital] = useState([])
   const [searchData, setSearchData] = useState('')
+  const [loaderquery, setLoaderQuery] = useState(false)
+  const [error, setError] = useState('')
+  const [dataquery, setDataQuery] = useState([]);
+  const [query, setQuery] = useState("")
+  const [dataerror, setDataError] = useState("");
 
-  const fetchCapital = async (cap) => {
-    const response = await fetch(`${capitalUrl}${cap}`)
-    const capitalData = await response.json()
-    setCapital(capitalData)
-    console.log(capitalData)
-  }
   
-  const searchButton = () => {
-    fetchCapital(searchData)
+  const handleInput = (e) => {
+    setQuery(e.target.value)
   }
+
+  useEffect(() => {
+    async function findData() {
+      try {
+        setLoaderQuery(true)
+        setDataError("")
+        const res = await fetch(`${capitalUrl}${query}`);
+        if (!res.ok) throw new Error("cant find countries !!!!!!")
+        const data = await res.json();
+        setDataQuery(data)
+        setDataError("")
+        console.log(data)
+      } catch (err) {
+        setDataError(err.message)
+      } finally {
+        setLoaderQuery(false)
+      }
+    }
+    if (query.length < 3) {
+      setDataQuery([])
+      setDataError("")
+      return
+    }
+    findData()
+  }, [query])
+
+  // const fetchCapital = async (cap) => {
+  //   const response = await fetch(`${capitalUrl}${cap}`)
+  //   const capitalData = await response.json()
+  //   setCapital(capitalData)
+  //   console.log(capitalData)
+  // }
+  
+  // const searchButton = () => {
+  //   fetchCapital(searchData)
+  // }
 
 
 
@@ -25,15 +60,15 @@ const Capital = () => {
       <div className='search'>
         <input
           placeholder='search for capital'
-          value={searchData}
-          onChange={(e) => setSearchData(e.target.value)}
+          value={query}
+          onChange={handleInput}
         />
-        <img src={SearchIcon}
+        {/* <img src={SearchIcon}
           onClick={searchButton}
           alt='search'
-        />
+        /> */}
       </div>
-      < Worldcapital data={capital} />
+      < Worldcapital data={dataquery} />
     </div>
   )
 }
