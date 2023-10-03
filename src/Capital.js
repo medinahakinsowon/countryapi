@@ -56,7 +56,7 @@ const Capital = () => {
 
   return (
     <div>
-      <h3 style={{marginLeft: '100px', color:'white', fontSize: '50px'}}>World Capital</h3>
+      <h3 style={{marginLeft: '100px', color:'white', fontSize: '50px'}}>World Capital Cities</h3>
       <div className='search'>
         <input
           placeholder='search for capital'

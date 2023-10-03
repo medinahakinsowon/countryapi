@@ -92,7 +92,7 @@ const FetchData = () => {
 
       </div>
       <OpenC list={dataquery} />
-      {loader && <Loader />}
+      {loader && <h2>Loading, please wait.........</h2>}
       {error && <Error message={error} />}
       {!error && !loader && <World data={dataCountry}></World>}
     </div>
